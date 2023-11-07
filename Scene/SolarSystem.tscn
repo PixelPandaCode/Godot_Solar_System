@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dnk1iyfplkeql"]
+
+[ext_resource type="PackedScene" uid="uid://ypvo1tbtfdis" path="res://Scene/Planet.tscn" id="1_lvdrm"]
+[ext_resource type="Script" path="res://Script/PlanetManager.gd" id="1_yg4vi"]
+
+[sub_resource type="Environment" id="Environment_hdig5"]
+background_mode = 3
+background_canvas_max_layer = 1
+glow_enabled = true
+glow_blend_mode = 1
+glow_hdr_threshold = 0.15
+
+[sub_resource type="Curve2D" id="Curve2D_7rh3v"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 1154, 0, 0, 0, 0, 0, 1152, 646, 0, 0, 0, 0, 2, 648, 0, 0, 0, 0, 0, -3, 0, 0, 0, 0, 3, 0)
+}
+point_count = 6
+
+[node name="SolarSystem" type="Node2D"]
+script = ExtResource("1_yg4vi")
+planet_prefab = ExtResource("1_lvdrm")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_hdig5")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_7rh3v")
